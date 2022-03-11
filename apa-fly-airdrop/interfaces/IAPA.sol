@@ -1,0 +1,66 @@
+pragma solidity ^0.8.10;
+
+interface IAPA {
+    event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
+    event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
+    event Claim(uint256 indexed _id);
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+    event Redeem(uint256 indexed _id);
+    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
+
+    function INITIAL_CLAIM_PRICE() view external returns (uint256);
+    function MAX_MINTABLE() view external returns (uint256);
+    function MAX_PER_CLAIM() view external returns (uint256);
+    function POST_5000_PRICE() view external returns (uint256);
+    function ROYALTY_VALUE() view external returns (uint256);
+    function addHonoraries(address[] memory honoraries) external;
+    function airdropNumber() view external returns (uint256);
+    function approve(address to, uint256 tokenId) external;
+    function balanceOf(address owner) view external returns (uint256);
+    function canClaim() view external returns (bool);
+    function canClaimAirdrop() view external returns (bool);
+    function claim(uint256 n) payable external;
+    function claimRewards() external;
+    function emergencyWithdraw() external;
+    function getApproved(uint256 tokenId) view external returns (address);
+    function getClaimedAirdrops(address account) view external returns (uint256);
+    function getCurrentReward(uint256 index) view external returns (uint256 reward);
+    function getImageIDs(uint256 from, uint256 length) view external returns (uint256[] memory);
+    function getNextBatchPrice(uint256 amount) view external returns (uint256 batchPrice);
+    function getProjectedReward(uint256 index) view external returns (uint256 reward);
+    function getRecognizedContracts() view external returns (address[] memory contracts);
+    function getRewards() view external returns (uint256 value);
+    function givenRewards(uint256) view external returns (uint256);
+    function isApprovedForAll(address owner, address operator) view external returns (bool);
+    function isContractRecognized(address newContract) view external returns (bool isRecognized);
+    function minted() view external returns (uint256);
+    function name() view external returns (string memory);
+    function numHonoraries() view external returns (uint256);
+    function owner() view external returns (address);
+    function ownerOf(uint256 tokenId) view external returns (address);
+    function post5000Extra() view external returns (uint256);
+    function recognizeContract(address newContract) external;
+    function redeem(address account, uint256 totalGiven, uint256 requesting, bytes32[] memory proof) external;
+    function renounceOwnership() external;
+    function royaltyInfo(uint256 tokenId, uint256 value) view external returns (address receiver, uint256 royaltyAmount);
+    function safeTransferFrom(address from, address to, uint256 tokenId) external;
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) external;
+    function setAirdropDetails(uint256 number, bytes32 root) external;
+    function setApprovalForAll(address operator, bool approved) external;
+    function setBaseUri(string memory uri) external;
+    function supportsInterface(bytes4 interfaceId) view external returns (bool);
+    function symbol() view external returns (string memory);
+    function toggleAirdropClaimability() external;
+    function toggleClaimability() external;
+    function tokenByIndex(uint256 index) view external returns (uint256);
+    function tokenOfOwnerByIndex(address owner, uint256 index) view external returns (uint256);
+    function tokenURI(uint256 tokenId) view external returns (string memory);
+    function totalProjectedRewards() view external returns (uint256);
+    function totalSupply() view external returns (uint256);
+    function transferFrom(address from, address to, uint256 tokenId) external;
+    function transferOwnership(address newOwner) external;
+    function withdrawBalance() external;
+    function withdrawableBalance() view external returns (uint256 value);
+    function withdrawn() view external returns (uint256);
+}
+
