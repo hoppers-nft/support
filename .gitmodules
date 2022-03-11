@@ -1,0 +1,3 @@
+[submodule "vesting"]
+	path = vesting
+	url = https://github.com/joshieDo/vested-erc20
